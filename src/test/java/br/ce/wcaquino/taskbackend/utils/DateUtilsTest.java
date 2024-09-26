@@ -13,8 +13,8 @@ public class DateUtilsTest {
 
 
     @Test
-    public void deveRetornarTrueParaDataFutura() {
-        LocalDate date = LocalDate.now().plusDays(1);
+    public void deveRetornarTrueParaDataAtual() {
+        LocalDate date = LocalDate.now();
         assertTrue(isEqualOrFutureDate(date));
 
     }
@@ -22,6 +22,13 @@ public class DateUtilsTest {
     public void deveRetornarFalseParaDataFutura() {
         LocalDate date = LocalDate.now().plusDays(-1);
         assertFalse(isEqualOrFutureDate(date));
+
+    }
+
+    @Test
+    public void deveRetornarTrueParaDataFutura() {
+        LocalDate date = LocalDate.now().plusDays(1);
+        assertTrue(isEqualOrFutureDate(date));
 
     }
 }
