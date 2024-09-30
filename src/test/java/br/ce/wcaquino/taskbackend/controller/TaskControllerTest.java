@@ -40,7 +40,7 @@ public class TaskControllerTest {
 
         when(taskRepository.save(task)).thenReturn(task);
         ResponseEntity<Task> response = taskController.save(task);
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(task, response.getBody());
 
     }
@@ -53,7 +53,7 @@ public class TaskControllerTest {
         try {
             taskController.save(task);
         } catch (ValidationException e) {
-            assertEquals("Filsl the task description", e.getMessage());
+            assertEquals("Fill the task description", e.getMessage());
         }
     }
 
@@ -64,7 +64,7 @@ public class TaskControllerTest {
         try {
             taskController.save(task);
         } catch (ValidationException e) {
-            assertEquals("Fisll the due date", e.getMessage());
+            assertEquals("Fill the due date", e.getMessage());
         }
     }
 
