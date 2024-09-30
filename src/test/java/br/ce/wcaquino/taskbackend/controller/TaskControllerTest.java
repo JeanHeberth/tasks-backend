@@ -40,7 +40,7 @@ public class TaskControllerTest {
 
         when(taskRepository.save(task)).thenReturn(task);
         ResponseEntity<Task> response = taskController.save(task);
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(task, response.getBody());
 
     }
@@ -53,7 +53,7 @@ public class TaskControllerTest {
         try {
             taskController.save(task);
         } catch (ValidationException e) {
-            assertEquals("Fiddll the task description", e.getMessage());
+            assertEquals("Fill the task description", e.getMessage());
         }
     }
 
@@ -64,7 +64,7 @@ public class TaskControllerTest {
         try {
             taskController.save(task);
         } catch (ValidationException e) {
-            assertEquals("Fildafl the due date", e.getMessage());
+            assertEquals("Fill the due date", e.getMessage());
         }
     }
 
@@ -76,7 +76,7 @@ public class TaskControllerTest {
         try {
             taskController.save(task);
         } catch (ValidationException e) {
-            assertEquals("Dufdsae date must not be in past", e.getMessage());
+            assertEquals("Due date must not be in past", e.getMessage());
         }
     }
 }
